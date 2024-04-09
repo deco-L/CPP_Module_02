@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/04/05 13:53:52 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/04/05 17:01:32 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 class Fixed {
 private:
-  int               integer;
-  const static int  bit = 8;
+  int               value;
+  const static int  bit;
 
 public:
   Fixed( void );

@@ -6,16 +6,18 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/04/05 14:16:36 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/04/05 17:01:50 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
+const int Fixed::bit = 8;
+
 Fixed::Fixed(void) {
   std::cout << "Default constractor called"
             << std::endl;
-  integer = 0;
+  value = 0;
   return ;
 }
 
@@ -36,7 +38,7 @@ Fixed& Fixed::operator=(const Fixed& obj) {
   if (this != &obj) {
     std::cout << "Copy assignment operator called"
               << std::endl;
-    this->integer = obj.getRawBits();
+    value = obj.getRawBits();
   }
   else {
     std::cout << "\e[1;31mError: "
@@ -50,12 +52,12 @@ Fixed& Fixed::operator=(const Fixed& obj) {
 int Fixed::getRawBits(void) const {
   std::cout << "getRawBits member function called"
             << std::endl;
-  return integer;
+  return value;
 }
 
 void  Fixed::setRawBits(int const raw) {
   std::cout << "setRawBits member function called"
             << std::endl;
-  integer = raw;
+  value = raw;
   return ;
 }
