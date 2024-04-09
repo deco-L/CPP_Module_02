@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/04/05 17:21:07 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/04/09 11:02:11 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #ifndef FIXED_HPP
 
 #include <cstdlib>
+#include <math.h>
 #include <iostream>
 
 class Fixed {
