@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/04/12 00:11:40 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/04/12 18:05:40 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,35 +15,25 @@
 const int Fixed::bit = 8;
 
 Fixed::Fixed(void) {
-  std::cout << "Default constractor called"
-            << std::endl;
   this->value = 0;
   return ;
 }
 
 Fixed::Fixed(const Fixed& init_class) {
-  std::cout << "Copy constructor called"
-            << std::endl;
   *this = init_class;
   return ;
 }
 
 Fixed::Fixed(const int init_integer) {
-  std::cout << "Int constructor called"
-            << std::endl;
   this->value = init_integer << this->bit;
   return ;
 }
 
 Fixed::Fixed(const float init_num) {
-  std::cout << "Float constructor called"
-            << std::endl;
   this->value = roundf(init_num * (1 << this->bit));
 }
 
 Fixed::~Fixed(void) {
-  std::cout << "Destructor called"
-            << std::endl;
   return ;
 }
 
@@ -56,11 +46,11 @@ const Fixed&  Fixed::min(const Fixed& a, const Fixed& b) {
 }
 
 Fixed&  Fixed::max(Fixed& a, Fixed& b) {
-  return (a > b) ? b : a;
+  return (a > b) ? a : b;
 }
 
 const Fixed&  Fixed::max(const Fixed& a, const Fixed& b) {
-  return (a > b) ? b : a;
+  return (a > b) ? a : b;
 }
 
 int Fixed::getRawBits(void) const {
@@ -81,11 +71,8 @@ int Fixed::toInt(void) const {
 }
 
 Fixed& Fixed::operator=(const Fixed& obj) {
-  if (this != &obj) {
-    std::cout << "Copy assignment operator called"
-              << std::endl;
+  if (this != &obj)
     this->value = obj.getRawBits();
-  }
   else {
     std::cout << "\e[1;31mError: "
               << "Attempted self-assignment in copy assignment operator"
@@ -122,33 +109,33 @@ bool  Fixed::operator!=(const Fixed& obj) const {
 Fixed Fixed::operator+(const Fixed& obj) const {
   Fixed result;
 
-  result.setRawBits(this->getRawBits() + obj.getRawBits());
+  result.setRawBits((this->getRawBits() + obj.getRawBits()) >> result.bit);
   return (result);
 }
 
 Fixed Fixed::operator-(const Fixed& obj) const {
   Fixed result;
 
-  result.setRawBits(this->getRawBits() - obj.getRawBits());
+  result.setRawBits((this->getRawBits() - obj.getRawBits()) >> result.bit);
   return (result);
 }
 
 Fixed Fixed::operator*(const Fixed& obj) const {
   Fixed result;
 
-  result.setRawBits(this->getRawBits() * obj.getRawBits());
+  result.setRawBits((this->getRawBits() * obj.getRawBits()) >> result.bit);
   return (result);
 }
 
 Fixed Fixed::operator/(const Fixed& obj) const {
   Fixed result;
 
-  result.setRawBits(this->getRawBits() / obj.getRawBits());
+  result.setRawBits((this->getRawBits() / obj.getRawBits()) >> result.bit);
   return (result);
 }
 
 Fixed&  Fixed::operator++(void) {
-  this->value += (1 << this->bit);
+  this->value += 1;
   return (*this);
 }
 
@@ -156,12 +143,12 @@ Fixed Fixed::operator++(int) {
   Fixed result;
 
   result = *this;
-  result.value += (1 << this->bit);
+  this->value += 1;
   return (result);
 }
 
 Fixed&  Fixed::operator--(void) {
-  this->value -= (1 << this->bit);
+  this->value -= 1;
   return (*this);
 }
 
@@ -169,7 +156,7 @@ Fixed Fixed::operator--(int) {
   Fixed result;
 
   result = *this;
-  result.value -= (1 << this->bit);
+  this->value -= 1;
   return (*this);
 }
 
