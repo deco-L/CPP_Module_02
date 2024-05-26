@@ -6,11 +6,11 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/05/26 14:00:10 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/05/26 15:36:15 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../include/Fixed.hpp"
+#include "Fixed.hpp"
 
 const int Fixed::bit = 8;
 
@@ -31,6 +31,13 @@ Fixed::Fixed(const Fixed& init_class) {
 Fixed::Fixed(const int init_integer) {
   std::cout << "Int constructor called"
             << std::endl;
+  if (init_integer > __INT_MAX__ / (1 << this->bit)) {
+    std::cout << "\e[1;31mError : value too large.\e[0m" << std::endl;
+    exit(EXIT_FAILURE) ;
+  } else if (init_integer < INT_MIN / (1 << this->bit)) {
+    std::cout << "\e[1;31m]Error : value too small.\e[0m" << std::endl;
+    exit(EXIT_FAILURE);
+  }
   this->value = init_integer << this->bit;
   return ;
 }
@@ -38,6 +45,13 @@ Fixed::Fixed(const int init_integer) {
 Fixed::Fixed(const float init_num) {
   std::cout << "Float constructor called"
             << std::endl;
+  if (init_num > __INT_MAX__ / (1 << this->bit)) {
+    std::cout << "\e[1;31mError : value too large.\e[0m" << std::endl;
+    exit(EXIT_FAILURE);
+  } else if (init_num < INT_MIN / (1 << this->bit)) {
+    std::cout << "\e[1;31mError : value too small.\e[0m" << std::endl;
+    exit(EXIT_FAILURE);
+  }
   this->value = roundf(init_num * (1 << this->bit));
 }
 

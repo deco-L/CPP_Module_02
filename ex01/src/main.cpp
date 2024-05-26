@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/04/09 11:13:38 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/05/26 15:33:01 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int main(void) {
     std::cout << "d is " << d.toInt() << " as integer" << std::endl;
   }
   {
-    Fixed const e(2147483645.1234f);
+    Fixed const e(-8388608);
 
     std::cout << "e is " << e << std::endl;
   }

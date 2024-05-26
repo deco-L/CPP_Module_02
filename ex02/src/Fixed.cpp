@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/04/12 18:05:40 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/05/26 15:47:47 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,25 @@ Fixed::Fixed(const Fixed& init_class) {
 }
 
 Fixed::Fixed(const int init_integer) {
+  if (init_integer > __INT_MAX__ / (1 << this->bit)) {
+    std::cout << "\e[1;31mError : value too large.\e[0m" << std::endl;
+    exit(EXIT_FAILURE) ;
+  } else if (init_integer < INT_MIN / (1 << this->bit)) {
+    std::cout << "\e[1;31m]Error : value too small.\e[0m" << std::endl;
+    exit(EXIT_FAILURE);
+  }
   this->value = init_integer << this->bit;
   return ;
 }
 
 Fixed::Fixed(const float init_num) {
+  if (init_num > __INT_MAX__ / (1 << this->bit)) {
+    std::cout << "\e[1;31mError : value too large.\e[0m" << std::endl;
+    exit(EXIT_FAILURE);
+  } else if (init_num < INT_MIN / (1 << this->bit)) {
+    std::cout << "\e[1;31mError : value too small.\e[0m" << std::endl;
+    exit(EXIT_FAILURE);
+  }
   this->value = roundf(init_num * (1 << this->bit));
 }
 
