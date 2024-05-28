@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/05/28 22:26:56 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/05/28 22:54:53 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ public:
   Point( const Point& obj );
   ~Point( void );
 
-  const Point operator=( const Point& obj );
+  const Fixed&  getX( void ) const;
+  const Fixed&  getY( void ) const ;
+
+  Point& operator=( const Point& obj );
 };
 
 bool  bsp(const Point a, const Point b, const Point c, const Point point);
