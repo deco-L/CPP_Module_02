@@ -6,7 +6,13 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/03/20 20:11:44 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/05/28 22:27:15 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Fixed.hpp"
+#include "Point.hpp"
+
+int main(void) {
+  return (EXIT_SUCCESS);
+}
