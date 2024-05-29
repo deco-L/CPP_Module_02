@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/05/28 22:54:53 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/05/29 16:12:18 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ public:
   Point& operator=( const Point& obj );
 };
 
-bool  bsp(const Point a, const Point b, const Point c, const Point point);
+std::ostream& operator<<( std::ostream& out, const Point& point);
 
 #endif
