@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/05/26 13:57:40 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/06/01 17:04:01 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,5 @@ int main( void ) {
   std::cout << a.getRawBits() << std::endl;
   std::cout << b.getRawBits() << std::endl;
   std::cout << c.getRawBits() << std::endl;
-  a = a;
-  a.setRawBits(42.42f);
-  std::cout << a.getRawBits() << std::endl;
   return (EXIT_SUCCESS);
 }
