@@ -6,11 +6,11 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/05/28 15:27:20 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/06/01 15:29:18 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "../include/Fixed.hpp"
 
 const int Fixed::bit = 8;
 
@@ -52,15 +52,24 @@ Fixed::~Fixed(void) {
 }
 
 Fixed&  Fixed::min(Fixed& a, Fixed& b) {
-  return (a < b) ? a : b;
+  if (a.toFloat() <= b.toFloat())
+    return (a);
+  else
+    return (b);
 }
 
 const Fixed&  Fixed::min(const Fixed& a, const Fixed& b) {
-  return (a < b) ? a : b;
+  if (a.toFloat() <= b.toFloat())
+    return (a);
+  else
+    return (b);
 }
 
 Fixed&  Fixed::max(Fixed& a, Fixed& b) {
-  return (a > b) ? a : b;
+  if (a.toFloat() >= b.toFloat())
+    return (a);
+  else
+    return (b);
 }
 
 const Fixed&  Fixed::max(const Fixed& a, const Fixed& b) {
@@ -120,35 +129,23 @@ bool  Fixed::operator!=(const Fixed& obj) const {
   return (this->getRawBits() != obj.getRawBits());
 }
 
-Fixed Fixed::operator+(const Fixed& obj) const {
-  Fixed result;
-
-  result.setRawBits((this->getRawBits() + obj.getRawBits()) >> result.bit);
-  return (result);
+float Fixed::operator+(const Fixed& obj) const {
+  return (this->toFloat() + obj.toFloat());
 }
 
-Fixed Fixed::operator-(const Fixed& obj) const {
-  Fixed result;
-
-  result.setRawBits((this->getRawBits() - obj.getRawBits()) >> result.bit);
-  return (result);
+float Fixed::operator-(const Fixed& obj) const {
+  return (this->toFloat() - obj.toFloat());
 }
 
-Fixed Fixed::operator*(const Fixed& obj) const {
-  Fixed result;
-
-  result.setRawBits((this->getRawBits() * obj.getRawBits()) >> result.bit);
-  return (result);
+float Fixed::operator*(const Fixed& obj) const {
+  return (this->toFloat() * obj.toFloat());
 }
 
-Fixed Fixed::operator/(const Fixed& obj) const {
-  Fixed result;
-
-  result.setRawBits((this->getRawBits() / obj.getRawBits()) >> result.bit);
-  return (result);
+float Fixed::operator/(const Fixed& obj) const {
+  return (this->toFloat() / obj.toFloat());
 }
 
-Fixed&  Fixed::operator++(void) {
+Fixed Fixed::operator++(void) {
   this->value += 1;
   return (*this);
 }
@@ -161,7 +158,7 @@ Fixed Fixed::operator++(int) {
   return (result);
 }
 
-Fixed&  Fixed::operator--(void) {
+Fixed Fixed::operator--(void) {
   this->value -= 1;
   return (*this);
 }
