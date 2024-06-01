@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/06/01 15:29:18 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/06/01 18:53:14 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Fixed::Fixed(const int init_integer) {
     std::cout << "\e[1;31mError : value too large.\e[0m" << std::endl;
     exit(EXIT_FAILURE) ;
   } else if (init_integer < INT_MIN / (1 << this->bit)) {
-    std::cout << "\e[1;31m]Error : value too small.\e[0m" << std::endl;
+    std::cout << "\e[1;31mError : value too small.\e[0m" << std::endl;
     exit(EXIT_FAILURE);
   }
   this->value = init_integer << this->bit;
